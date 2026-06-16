@@ -4,13 +4,11 @@ import { Mail, Lock, Eye, EyeOff, LogIn, GraduationCap, AlertCircle } from 'luci
 import { useAppContext } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import SomoBloomLogo from '../components/layout/SomoBloomLogo';
-import AnimatedIntro from '../components/AnimatedIntro';
 
 export const LoginPage = () => {
   const { login, loginError } = useAppContext();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [showIntro, setShowIntro] = useState(true);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,8 +29,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      {showIntro && <AnimatedIntro onComplete={() => setShowIntro(false)} />}
-      <div className="login-page" style={{ opacity: showIntro ? 0 : 1, transition: 'opacity 1s ease-in' }}>
+      <div className="login-page">
       {/* Animated background blobs */}
       <div className="login-bg">
         <div className="blob blob-1" />
